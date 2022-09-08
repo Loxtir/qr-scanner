@@ -19,6 +19,12 @@
 <button id="start-button">Iniciar scanner</button>
 <button id="stop-button">Enviar código</button>
 
+<h1>Scan from File:</h1>
+<input type="file" id="file-selector">
+<b>Detected QR code: </b>
+<span id="file-qr-result">None</span>
+
+
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
 <!--<script src="../qr-scanner.legacy.min.js"></script>-->
 <script type="module">
@@ -28,6 +34,9 @@
     const videoContainer = document.getElementById('video-container');
     const camQrResult = document.getElementById('cam-qr-result');
     const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
+    const fileSelector = document.getElementById('file-selector');
+    const fileQrResult = document.getElementById('file-qr-result');
+    
     function setResult(label, result) {
         console.log(result.data);
         label.textContent = result.data;
@@ -66,7 +75,7 @@
 
         // access Adobe's home page
         if (conn.open ("192.168.0.23")) {
-            print("lmao")
+
             // send a HTTP GET request
             conn.write ("lmao420nice\n\n");
 
