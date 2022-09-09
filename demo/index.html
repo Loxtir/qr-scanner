@@ -70,19 +70,13 @@
 
     document.getElementById('stop-button').addEventListener('click', () => {
         //scanner.stop();
-        conn = new Socket;
+        let socket = new WebSocket("ws://192.168.0.23");
 
-        // access Adobe's home page
-        if (conn.open ("192.168.0.23")) {
-
-            // send a HTTP GET request
-            conn.write ("lmao420nice\n\n");
-
-            // and read the server's reply
-            //reply = conn.read(999999);
-
-            conn.close();
-        }
+        socket.onopen = function(e) {
+            alert("[open] Conexión establecida");
+            alert("Enviando al servidor");
+            socket.send("lmao420nice");
+        };
     });
 
     // ####### File Scanning #######
